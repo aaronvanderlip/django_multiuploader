@@ -20,7 +20,7 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
- AutoUpload: true, 
+ autoUpload: true, 
  sequentialUploads: true, 
  url: url, 
     });
@@ -38,9 +38,9 @@ $(function () {
         // Demo settings:
         $('#fileupload').fileupload('option', {
             url: url,
-            AutoUpload: true, 
+            autoUpload: true, 
             sequentialUploads: true, 
-            maxFileSize: 5000000,
+            maxFileSize: 20000000, // 20MB
             acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
             process: [
                 {
