@@ -11,7 +11,7 @@ setup(
     url='',
     license='BSD license',
     description='Adds jQuery File Upload support',
-    long_description=open('README.rst').read(),
+    long_description='',
     include_package_data=True,
     install_requires=['django>= 1.3',],
     zip_safe=False,

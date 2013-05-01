@@ -72,8 +72,4 @@ $(function () {
                 .call(this, null, {result: result});
         });
 
-    // Initialize the Image Gallery widget:
-    $('#fileupload .files').imagegallery();
-
-
 });
