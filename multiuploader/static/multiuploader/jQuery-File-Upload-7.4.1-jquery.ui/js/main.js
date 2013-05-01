@@ -62,7 +62,6 @@ $(function () {
         // Upload server status check for browsers with CORS support:
         // Load existing files:
         $.ajax({
-
             xhrFields: {withCredentials: true},
             url: $('#fileupload').fileupload('option', 'url'),
             dataType: 'json',
