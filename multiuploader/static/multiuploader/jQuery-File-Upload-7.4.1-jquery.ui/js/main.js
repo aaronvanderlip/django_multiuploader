@@ -61,12 +61,18 @@ $(function () {
 
         // Add event handler for renaming files.
         $('#fileupload').bind('fileuploadcompleted', function (e, data) {
-           $('.template-download .rename').each( function(){
-             
+           $('.template-download .name').each( function(){
+             $(this).parents('tr.template-download').find('td.name a').bind('click',
+               function(){
+                $(this).toggleClass('icon-pencil'); 
+             }
+             )
+
                // Setup editable for field
                $(this).parents('tr.template-download').find('td.name a').editable({
                event: 'click',
                callback: function(data){
+               data.$el.toggleClass('icon-pencil'); 
                if(data.content){
 
                var title = data.content;
@@ -78,7 +84,6 @@ $(function () {
                    type: 'POST',
                    data:{'title':title}, 
                });
-               data.$el.effect('blink');
                }
                }});
            });
