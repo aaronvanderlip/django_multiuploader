@@ -5,7 +5,6 @@ register = template.Library()
 @register.simple_tag
 def jquery_uploader_js():
       return"""
-
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-upload ">
@@ -56,6 +55,10 @@ def jquery_uploader_js():
             <td colspan="2"></td>
         {% } %}
         <td>
+            <a href="" class="btn rename" data-type="{%=file.delete_type%}" data-url="{%=file.rename_url%}">
+                <i class="icon-trash icon-white"></i>
+                <span>Delete</span>
+            </a>
             <button class="btn btn-danger delete" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                 <i class="icon-trash icon-white"></i>
                 <span>Delete</span>
@@ -65,9 +68,4 @@ def jquery_uploader_js():
     </tr>
 {% } %}
 </script>
-
-
-
-
-
       """
