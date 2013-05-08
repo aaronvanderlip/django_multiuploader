@@ -55,7 +55,7 @@ def jquery_uploader_js():
             <td colspan="2"></td>
         {% } %}
         <td>
-            <a href="" class="btn rename" data-type="{%=file.delete_type%}" data-url="{%=file.rename_url%}">
+            <a class="btn rename" data-type="{%=file.delete_type%}" data-url="{%=file.rename_url%}">
                 <i class="icon-trash icon-white"></i>
                 <span>Delete</span>
             </a>
