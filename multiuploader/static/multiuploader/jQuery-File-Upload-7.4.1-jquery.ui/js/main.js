@@ -64,15 +64,17 @@ $(function () {
            $('.template-download .name').each( function(){
              $(this).parents('tr.template-download').find('td.name a').bind('click',
                function(){
-                $(this).toggleClass('icon-pencil'); 
+                $(this).toggleClass('icon-edit icon-large'); 
              }
              )
 
                // Setup editable for field
                $(this).parents('tr.template-download').find('td.name a').editable({
                event: 'click',
+               closeOnEnter:true,
+               toggleFontSize:false,
                callback: function(data){
-               data.$el.toggleClass('icon-pencil'); 
+               data.$el.toggleClass('icon-edit icon-large'); 
                if(data.content){
 
                var title = data.content;

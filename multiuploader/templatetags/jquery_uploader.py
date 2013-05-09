@@ -49,7 +49,7 @@ def jquery_uploader_js():
                 <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
             {% } %}</td>
             <td class="name">
-           <a class="icon-pencil icon-large" href="{%=file.url%}" title="{%=file.name%}" data-url="{%=file.rename_url%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+           <a class="icon-edit icon-large" title="click to edit name"  href="{%=file.url%}" title="{%=file.name%}" data-url="{%=file.rename_url%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
             </td>
             <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
             <td colspan="2"></td>
