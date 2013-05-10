@@ -5,7 +5,6 @@ register = template.Library()
 @register.simple_tag
 def jquery_uploader_js():
       return"""
-
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-upload ">
@@ -50,7 +49,7 @@ def jquery_uploader_js():
                 <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
             {% } %}</td>
             <td class="name">
-                <a href="{%=file.url%}" title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+           <a class="icon-edit icon-large" title="click to edit name"  href="{%=file.url%}" title="{%=file.name%}" data-url="{%=file.rename_url%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
             </td>
             <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
             <td colspan="2"></td>
@@ -69,9 +68,4 @@ def jquery_uploader_js():
     </tr>
 {% } %}
 </script>
-
-
-
-
-
       """

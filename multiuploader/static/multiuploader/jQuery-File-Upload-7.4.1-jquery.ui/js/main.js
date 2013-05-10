@@ -59,6 +59,38 @@ $(function () {
             ]
         });
 
+        // Add event handler for renaming files.
+        $('#fileupload').bind('fileuploadcompleted', function (e, data) {
+           $('.template-download .name').each( function(){
+             $(this).parents('tr.template-download').find('td.name a').bind('click',
+               function(){
+                $(this).toggleClass('icon-edit icon-large'); 
+             }
+             )
+
+               // Setup editable for field
+               $(this).parents('tr.template-download').find('td.name a').editable({
+               event: 'click',
+               closeOnEnter:true,
+               toggleFontSize:false,
+               callback: function(data){
+               data.$el.toggleClass('icon-edit icon-large'); 
+               if(data.content){
+
+               var title = data.content;
+               var url = data.$el.data('url'); 
+               $.ajax({
+                   xhrFields: {withCredentials: true},
+                   url: url,
+                   dataType: 'json',
+                   type: 'POST',
+                   data:{'title':title}, 
+               });
+               }
+               }});
+           });
+        })
+
         // Upload server status check for browsers with CORS support:
         // Load existing files:
         $.ajax({
