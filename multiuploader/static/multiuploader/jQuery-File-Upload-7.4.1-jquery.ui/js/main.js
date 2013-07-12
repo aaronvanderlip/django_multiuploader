@@ -60,9 +60,10 @@ $(function () {
             ]
         })
         .bind('fileuploadcompleted', function (e, data) { 
-        // Editable must be called after JS template is rendered and DOM is ready. 
-        $('td.name a').editable();
-        $('.fileupload-header').show();
+          $('td.name a').editable();
+          if (data.result.files.length > 0){
+            $('.fileupload-header').show();
+          }
         })
         ;
 
