@@ -27,6 +27,7 @@ $(function () {
 
     // Enable iframe cross-domain access via redirect option:
     $('#fileupload').fileupload(
+
         'option',
         'redirect',
         window.location.href.replace(
@@ -57,39 +58,14 @@ $(function () {
                     action: 'save'
                 }
             ]
-        });
-
-        // Add event handler for renaming files.
-        $('#fileupload').bind('fileuploadcompleted', function (e, data) {
-           $('.template-download .name').each( function(){
-             $(this).parents('tr.template-download').find('td.name a').bind('click',
-               function(){
-                $(this).toggleClass('icon-edit icon-large'); 
-             }
-             )
-
-               // Setup editable for field
-               $(this).parents('tr.template-download').find('td.name a').editable({
-               event: 'click',
-               closeOnEnter:true,
-               toggleFontSize:false,
-               callback: function(data){
-               data.$el.toggleClass('icon-edit icon-large'); 
-               if(data.content){
-
-               var title = data.content;
-               var url = data.$el.data('url'); 
-               $.ajax({
-                   xhrFields: {withCredentials: true},
-                   url: url,
-                   dataType: 'json',
-                   type: 'POST',
-                   data:{'title':title}, 
-               });
-               }
-               }});
-           });
         })
+        .bind('fileuploadcompleted', function (e, data) { 
+        // Editable must be called after JS template is rendered and DOM is ready. 
+        $('td.name a').editable();
+        $('.fileupload-header').show();
+        })
+        ;
+
 
         // Upload server status check for browsers with CORS support:
         // Load existing files:
@@ -99,8 +75,13 @@ $(function () {
             dataType: 'json',
             context: $('#fileupload')[0]
         }).done(function (result) {
+            if (result.files.length > 0){
+               $('.fileupload-header').show();
+            }
             $(this).fileupload('option', 'done')
                 .call(this, null, {result: result});
+        // Editable must be intialzied after refresh.
+        $('td.name a').editable();
         });
 
 });
