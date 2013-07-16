@@ -42,7 +42,7 @@ $(function () {
             autoUpload: true, 
             sequentialUploads: true, 
             maxFileSize: 20000000, // 20MB
-            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+            //acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
             process: [
                 {
                     action: 'load',
