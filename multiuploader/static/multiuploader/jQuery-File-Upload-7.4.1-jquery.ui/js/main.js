@@ -71,18 +71,19 @@ $(function () {
         // Upload server status check for browsers with CORS support:
         // Load existing files:
         $.ajax({
-            xhrFields: {withCredentials: true},
-            url: $('#fileupload').fileupload('option', 'url'),
-            dataType: 'json',
-            context: $('#fileupload')[0]
+          xhrFields: {withCredentials: true},
+          url: $('#fileupload').fileupload('option', 'url'),
+          dataType: 'json',
+          context: $('#fileupload')[0]
         }).done(function (result) {
-            if (result.files.length > 0){
-               $('.fileupload-header').show();
-            }
-            $(this).fileupload('option', 'done')
-                .call(this, null, {result: result});
-        // Editable must be intialzied after refresh.
-        $('td.name a').editable();
+          $(this).fileupload('option', 'done')
+          .call(this, null, {result: result});
+          // Editable must be intialzied after refresh.
+          $('td.name a').editable();
+          // Show widget header if files are available.
+          if (result.files.length > 0){
+            $('.fileupload-header').show();
+          }
         });
 
 });
