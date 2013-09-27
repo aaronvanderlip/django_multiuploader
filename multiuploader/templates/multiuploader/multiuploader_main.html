@@ -3,7 +3,6 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/jquery-ui.css" id="theme">
 <link rel="stylesheet" href="{% static 'multiuploader/jQuery-File-Upload-7.4.1-jquery.ui/css/jquery.fileupload-ui.css' %}" />
-<link rel="stylesheet" href="{% static 'multiuploader/FortAwesome-Font-Awesome/css/font-awesome.min.css' %}" />
 
 <form action="{{ target }}uploadfile/" id="fileupload" method="POST" enctype="multipart/form-data">{% csrf_token %}
 <!-- Redirect browsers with JavaScript disabled to the origin page -->
